@@ -4,7 +4,7 @@ namespace ShowOff {
      * 
      */
     //% blockId=showofffillatpos
-    //% block="plot at index"
+    //% block="fillAt $pos"
     //% pos.min=0 pos.max=25
     export function fillAtPos(pos: number): void {
         pos |= 0;
