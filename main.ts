@@ -1,5 +1,11 @@
 namespace ShowOff {
-
+    /*
+     * Address LEDs lineary
+     * 
+     */
+    //% blockId=showofffillatpos
+    //% block="plot at index"
+    //% pos.min=0 pos.max=25
     export function fillAtPos(pos: number): void {
         pos |= 0;
         const x = Math.floor(pos % 5);
