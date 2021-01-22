@@ -20,22 +20,32 @@ namespace ShowOff {
      * Registers code to run when the radio receives a number.
      */
     //% help=ShowOff/on-received-number
-    //% blockId=ShowOff_on_number_drag block="on radio received" blockGap=16
+    //% blockId=ShowOff_on_number_drag block="on limit reached" blockGap=16
     //% draggableParameters=reporter
     export function onLimitReached(cb: (limit: number) => void) {
         onLimitReachedHandler = cb;
     }
-
+    /**
+     * Registers code to run when the radio receives a number.
+     */
+    //% help=ShowOff/on-received-number
+    //% blockId=ShowOff_on_number block="on limit not reached" blockGap=16
+    //% draggableParameters=reporter
     export function onLimitNotReached(cb: (limit: number) => void) {
         onLimitNotReachedHandler = cb;
     }
 
+    /**
+     * This is a statement block with a parameter
+     */
+    //% block
     export function checkLimit(pin: AnalogPin) {
-        if (pins.analogReadPin(pin) < 40){
-            onLimitReachedHandler(4);
+        let analogValue = pins.analogReadPin(pin)
+        if ( analogValue< 500){
+            onLimitReachedHandler(analogValue);
         }
         else {
-            onLimitNotReachedHandler(0);
+            onLimitNotReachedHandler(analogValue);
         }
     }
 }
